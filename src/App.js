@@ -1,7 +1,7 @@
 import { useHistory } from 'react-router';
 import './App.css';
-// import React, { useEffect } from "react";
-// import { Link, Router } from "react-router-dom";
+import { config } from "./config";
+
 declare var ZoomMtg;
 
 ZoomMtg.setZoomJSLib('https://source.zoom.us/1.9.1/lib', '/av');
@@ -12,14 +12,14 @@ ZoomMtg.prepareWebSDK();
 function Zoom() {
 
   // setup your signature endpoint here: https://github.com/zoom/websdk-sample-signature-node.js
-  const signatureEndpoint = 'http://localhost:4000/questions/zoom-signature'
+  const signatureEndpoint = `${config.appUrl}/questions/zoom-signature`;
   const history = useHistory();
   // var meetingNumber = '74767890439'
   const role = 1
-  const leaveUrl = 'http://localhost:3000'
-  const userName = 'React'
-  const userEmail = 'ijisrael42@gmail.com'
-  const passWord = 'string'
+  const leaveUrl = config.zoomUrl;
+  const userName = 'React';
+  const userEmail = 'ijisrael42@gmail.com';
+  const passWord = 'string';
 
   // useEffect(() => {
     const getSignature = () => {
