@@ -2,17 +2,19 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
+import Zoom from './Zoom';
 import reportWebVitals from './reportWebVitals';
-import { BrowserRouter, Switch, Route, Redirect} from "react-router-dom";
+import { BrowserRouter, Switch, Route} from "react-router-dom";
 
 
 ReactDOM.render(
   <BrowserRouter> 
     <Switch>
-      <Route path="/zoom" render={(props) => <App {...props} />} />
-      <Route path="/zoom/:id/:email/:role" render={(props) => <App {...props} />} />
+      <Route path="/" exact={true} render={(props) => <App {...props} />} />
+      <Route path="/zoom/:email/:access" exact={true} render={(props) => <Zoom {...props} />} />
+      <Route path="/zoom/:id/:email/:access" exact={true} render={(props) => <Zoom {...props} />} />
 
-      <Redirect from="/" to="/zoom" />
+      {/* <Redirect from="/" to="/zoom" /> */}
       
     </Switch>
   </BrowserRouter>,

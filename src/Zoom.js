@@ -1,5 +1,6 @@
 import './App.css';
 import React, { useEffect } from "react";
+import { useParams } from "react-router-dom";
 
 declare var ZoomMtg;
 
@@ -11,14 +12,16 @@ ZoomMtg.prepareWebSDK();
 function Zoom() {
 
   // setup your signature endpoint here: https://github.com/zoom/websdk-sample-signature-node.js
-  const signatureEndpoint = 'http://localhost:4000/questions/zoom-signature'
+  const signatureEndpoint = 'http://localhost:4000/questions/zoom-signature';
+  const params = useParams();
 
-  // var meetingNumber = '74767890439'
-  const role = 1
-  const leaveUrl = 'http://localhost:3000'
-  const userName = 'React'
-  const userEmail = 'ijisrael42@gmail.com'
-  const passWord = 'string'
+  const role = params.access;
+  // const leaveUrl = 'http://localhost:3000';
+  const leaveUrl = `http://localhost:8100/question/tutor/${params.id}/complete`
+
+  const userName = 'React';
+  const userEmail = params.email;
+  const passWord = 'string';
 
   useEffect(() => {
     const getSignature = () => {
@@ -70,7 +73,7 @@ function Zoom() {
     };
 
     getSignature();
-  }, []);
+  }, [userEmail,leaveUrl,role]);
 
   return (
     <div className="App">
