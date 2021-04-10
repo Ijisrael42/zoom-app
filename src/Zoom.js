@@ -1,7 +1,7 @@
 import './App.css';
 import React, { useEffect } from "react";
 import { useParams } from "react-router-dom";
-import { config } from "../helpers/config";
+import { config } from "./config";
 
 declare var ZoomMtg;
 
@@ -75,7 +75,7 @@ function Zoom() {
     };
 
     getSignature();
-  }, [userEmail,leaveUrl,role]);
+  }, [userEmail,leaveUrl,role,signatureEndpoint]);
 
   return (
     <div className="App">
