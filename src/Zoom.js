@@ -19,7 +19,7 @@ function Zoom() {
 
   const role = params.access;
   // const leaveUrl = 'http://localhost:3000';
-  const leaveUrl = `${config.appUrl}/question/tutor/${params.id}/complete`
+  const leaveUrl = `${config.appUrl}/question/tutor/${params.id}/complete/${params.bidid}`
 
   const userName = 'React';
   const userEmail = params.email;
