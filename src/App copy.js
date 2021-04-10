@@ -1,8 +1,7 @@
+import { useHistory } from 'react-router';
 import './App.css';
-import React, { useEffect } from "react";
-import { useParams } from "react-router-dom";
-import { config } from "../helpers/config";
-
+// import React, { useEffect } from "react";
+// import { Link, Router } from "react-router-dom";
 declare var ZoomMtg;
 
 ZoomMtg.setZoomJSLib('https://source.zoom.us/1.9.1/lib', '/av');
@@ -13,19 +12,16 @@ ZoomMtg.prepareWebSDK();
 function Zoom() {
 
   // setup your signature endpoint here: https://github.com/zoom/websdk-sample-signature-node.js
-  const signatureEndpoint = `${config.apiUrl}/questions/zoom-signature`;
-  //'http://localhost:4000/questions/zoom-signature';
-  const params = useParams();
+  const signatureEndpoint = 'http://localhost:4000/questions/zoom-signature'
+  const history = useHistory();
+  // var meetingNumber = '74767890439'
+  const role = 1
+  const leaveUrl = 'http://localhost:3000'
+  const userName = 'React'
+  const userEmail = 'ijisrael42@gmail.com'
+  const passWord = 'string'
 
-  const role = params.access;
-  // const leaveUrl = 'http://localhost:3000';
-  const leaveUrl = `${config.appUrl}/question/tutor/${params.id}/complete`
-
-  const userName = 'React';
-  const userEmail = params.email;
-  const passWord = 'string';
-
-  useEffect(() => {
+  // useEffect(() => {
     const getSignature = () => {
 
       fetch(signatureEndpoint, {
@@ -74,15 +70,20 @@ function Zoom() {
       })
     };
 
-    getSignature();
-  }, [userEmail,leaveUrl,role]);
+    // getSignature();
+  // }, []);
 
   return (
     <div className="App">
       <main>
-        {/* <h1>Zoom WebSDK Sample React</h1> */}
+        <h1>Zoom WebSDK Sample React</h1>
 
-        {/* <button onClick={getSignature}>Join Meeting</button> */}
+        <button onClick={getSignature}>Join Meeting</button>
+        {/* <Router>
+          <Link to={`/zoom/${userEmail}/${role}`} > */}
+            <button onClick={() => history.push(`/zoom/${userEmail}/${role}`) } type="button">Join Link</button>
+          {/* </Link>
+        </Router> */}
       </main>
     </div>
   );
