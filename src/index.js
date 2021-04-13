@@ -13,7 +13,7 @@ ReactDOM.render(
       <Route path="/" exact={true} render={(props) => <App {...props} />} />
       <Route path="/zoom/:email/:access" exact={true} render={(props) => <Zoom {...props} />} />
       <Route path="/zoom/:id/:email/:access" exact={true} render={(props) => <Zoom {...props} />} />
-      <Route path="/zoom/:id/:email/:access/:bidid" exact={true} render={(props) => <Zoom {...props} />} />
+      <Route path="/zoom/:id/:email/:access/:bidid/:question_id" exact={true} render={(props) => <Zoom {...props} />} />
 
       {/* <Redirect from="/" to="/zoom" /> */}
       
